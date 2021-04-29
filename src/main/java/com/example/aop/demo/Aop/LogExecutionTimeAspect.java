@@ -13,14 +13,14 @@ public class LogExecutionTimeAspect {
 
     Logger logger =  LoggerFactory.getLogger(LogExecutionTimeAspect.class);
 
-    @Pointcut()
+    @Pointcut("@annotation(com.example.aop.demo.CustomAnnotation.LogExecutionTime)")
     public void onPointcut() {
         logger.info("=============== ExecutionTimeAspect onPointcut");
     }
 
 
     // Aspect와 다른 패키지에 있을 경우 경로를 적어줘여 찾을 수 있음
-    @Around("@annotation(com.example.aop.demo.CustomAnnotation.LogExecutionTime)")
+    @Around("onPointcut()")
     public Object onAroundHandler(ProceedingJoinPoint pjp) throws Throwable {
 
         StopWatch stopWatch = new StopWatch();

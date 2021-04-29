@@ -2,6 +2,7 @@ package com.example.aop.demo.Config;
 
 import com.example.aop.demo.Aop.CacheAspect;
 import com.example.aop.demo.Aop.LogAspect;
+import com.example.aop.demo.Aop.LogExecutionTimeAspect;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -21,4 +22,8 @@ public class AspectJConfig {
         return new LogAspect();
     }
 
+    @Bean
+    public LogExecutionTimeAspect logExecutionTimeAspect() {
+        return new LogExecutionTimeAspect();
+    }
 }
